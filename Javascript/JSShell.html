@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Javascript Shell</title>
+
+	<!-- Need this first -->
+	<script type="text/javascript"
+		src="IsInt.js"></script>
+
+	<script type="text/javascript"
+		src="isEven.js">
+	</script>
+
+	<script type="text/javascript"
+		src="factorial.js">
+	</script>
+<!-- 
+	<script type="text/javascript"
+		src="kebabToCamel.js">
+	</script>
+ -->
+ 	<script type="text/javascript"
+ 		src="ReturnFunction.js">	
+ 	</script>
+
+</head>
+<body>
+	<h1>Javascript Shell</h1>
+
+
+	<!-- This is a testing script -->
+	<script type="text/javascript">
+		window.setTimeout (
+			function() {
+
+
+				// var s = prompt("Enter a string in \"Kebab-case\"");
+
+				// console.log(kebabToCamel(s));
+
+				// this variable stores a funciton;
+				var anyFunc = function(){};
+
+				var funcName = prompt("Enter the name of the function");
+
+				var num = prompt("Enter a number");
+
+				var result;
+
+				anyFunc = getFunc(funcName);
+
+				result = anyFunc(num);
+
+				console.log(funcName + "(" + num + ") = " + result);
+			}
+			, 500
+		);
+	</script>
+</body>
+</html>

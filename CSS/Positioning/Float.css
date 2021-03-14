@@ -1,0 +1,8 @@
+blockquote {
+    float: right;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    font-style: italic;
+    height: 100px;
+    width: 250px;
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Selector Exercise</title>
+</head>
+<body>
+    <h1> Selector Exercise </h1>
+    <div>Div1</div>
+    <div class="highlight">Div 2 </div>
+    <div id="third">Div 3</div>
+    <div class="highlight">Div 4</div>
+    
+    <script src="jQuery-3.4.1.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        // Let all DIVs be colored purple
+        $("div").css("color","purple");
+
+        // Let DIVs with class "highlight" be 200px wide
+        // ...to show that it is wider let all DIVs have a grey background
+        $(".highlight").css("width", "200px");  
+        $("div").css("background-color", "Lightgrey");
+
+        // Let DIV with id "third" have an orange border
+        $("#third").css({
+            borderWidth: "2px",
+            borderColor: "orange",
+            borderStyle: "solid"
+        });
+
+        // Let the 1st DIV be colored pink
+        $("div:nth-of-type(1)").css("color", "pink");
+
+    </script>
+</body>
+</html>

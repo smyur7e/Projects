@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>First to Finish</title>
+</head>
+<body>
+  <h1><span id="p1Wins">0</span> : <span id="p2Wins">0</span></h1>
+  
+  <h2>Playing to <span id="gamesHeader"></span> games</h2>
+  <input id="gamesNum" type="number" value="5">
+  <button id="p1">Player 1</button>
+  <button id="p2">Player 2</button>
+  <button id="reset">Reset</button>
+
+  <!-- *** Initialise global variable and declare event handlers *** -->
+  <script src="FirstToFinish.js"></script>
+
+  <!-- Assign event handlers to the appropriate controls -->
+  <script type="text/javascript">
+    document.getElementById("gamesNum").addEventListener("change", gamesNumChange);
+    document.getElementById("reset").addEventListener("click", reset);
+    document.getElementById("p1").addEventListener("click", playerClick);
+    document.getElementById("p2").addEventListener("click", playerClick);  
+  </script>
+</body>
+</html>

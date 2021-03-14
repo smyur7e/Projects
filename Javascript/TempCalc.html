@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Temperature Calculator</title>
+	<!-- <script src="TempCalc.js"></script> -->
+</head>
+<body>
+	<h1>Temperature Calculator</h1>
+	<p>
+		Here is a table of temperatures ranging from -40<sup>o</sup>C to 500<sup>o</sup>C and
+		their equivalent in fahrenheit.
+	</p>
+
+	<script type="text/javascript">
+
+		// table shell
+		var tableElement = document.createElement("table");
+		var theadElement = document.createElement("thead");
+		var tbodyElement = document.createElement("tbody");
+		tableElement.appendChild(theadElement);
+		tableElement.appendChild(tbodyElement);
+
+		// Column Headers
+		var thElement = document.createElement("th");
+		thElement.textContent = "Celcius";
+		theadElement.appendChild(thElement);
+		thElement = document.createElement("th");
+		thElement.textContent = "Fahrenheit";
+		theadElement.appendChild(thElement);
+
+		// table rows
+		for (var celcius = -40; celcius <= 500; celcius++) {
+			var trElement = document.createElement("tr");
+			tbodyElement.appendChild(trElement);
+
+			var tdElement = document.createElement("td");
+			tdElement.textContent = celcius;
+			tdElement.style.textAlign = "right";
+			trElement.appendChild(tdElement);
+			
+			tdElement = document.createElement("td");
+			tdElement.textContent = celcius * 9 / 5 + 32;
+			tdElement.style.textAlign = "right";
+			trElement.appendChild(tdElement);
+		}
+
+		// append table to the body
+		var bodyElement = document.getElementsByTagName("body")[0];
+		bodyElement.appendChild(tableElement);
+
+	</script>
+</body>
+</html>

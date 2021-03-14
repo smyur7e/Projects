@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Toggle Color</title>
+
+  <style type="text/css">
+    .bgColor1 {
+      background-color: pink;
+    }
+
+    .bgColor2 {
+      background-color: lightgreen;
+    }
+  </style>
+</head>
+<body>
+  <h1>Toggle Color</h1>
+  <div class="toggleRegion"
+        style="height: 100px;
+          min-width: 100px;
+          padding: 10px;
+          border: 2px solid;">
+    <button style="border-radius: 10px;
+              color: white;
+              background-color: blue;
+              padding: 5px;
+              border: 0;
+              margin: 0;">
+      click
+    </button>
+
+    <div>
+      The background color of this region will toggle between
+      <span class="bgColor1"></span>
+      and
+      <span class="bgColor2"></span>
+      when the button is clicked.
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    // get the RGB string values of each of the background colors
+    var spanRGB1 = document.querySelector(".bgColor1");
+    var rgb1 = window.getComputedStyle(spanRGB1).backgroundColor;
+    spanRGB1.textContent = rgb1;
+
+    var spanRGB2 = document.querySelector(".bgColor2");
+    var rgb2 = window.getComputedStyle(spanRGB2).backgroundColor;
+    spanRGB2.textContent = rgb2;
+
+    var toggleRegion = document.querySelector(".toggleRegion");
+    var button = document.getElementsByTagName("button")[0];
+
+    
+    button.addEventListener("click",
+      function () {
+        if (toggleRegion.style.backgroundColor === rgb1) {
+          toggleRegion.style.backgroundColor = rgb2;
+        } else if (toggleRegion.style.backgroundColor === rgb2) {
+          toggleRegion.style.backgroundColor = rgb1;
+        } else {
+          toggleRegion.style.backgroundColor = rgb1;
+        }
+      }
+    );
+  </script>
+</body>
+</html>

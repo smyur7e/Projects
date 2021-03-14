@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Scorekeeper</title>
+</head>
+<body>
+  <!-- Scores will be shown in this header separated by ":" -->
+  <h1></h1>
+  
+  <h2>Playing to <span id="gamesHeader"></span> games</h2>
+  <input id="gamesNum" type="number" value="5">
+  <!-- buttons go here -->
+
+  <!-- *** Initialise global variable and declare event handlers *** -->
+  <script src="Scorekeeper2.js"></script>
+
+  <!-- Assign event handlers to the appropriate controls -->
+  <script type="text/javascript">
+    document.getElementById("gamesNum").addEventListener("change", gamesNumChange);
+    document.getElementById("reset").addEventListener("click", reset);
+    document.getElementById("p1").addEventListener("click", playerClick);
+    document.getElementById("p2").addEventListener("click", playerClick);  
+  </script>
+</body>
+</html>

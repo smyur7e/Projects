@@ -1,0 +1,33 @@
+At what time(s) will the hour, minute and second hands of a clock be be exactly 120 deg (i.e. 2pi/3) apart?
+
+
+sr = angular velocity of second hand
+mr = angular velocity of minute hand
+hr = angular velocity of hour hand
+
+sr = 2pi / 60 per second
+mr = sr / 60 per second
+hr = mr / 60 = sr / 3600 per second
+
+t = time after which hands are equidistanc (i.e. 120 deg apart) from each other
+
+What we need are integers x & y and real t such that
+
+sr * t - mr * t = x * 2pi/3 ---> eq1
+
+mr * t - hr * t = y * 2pi/3 ---> eq2
+
+Substituting for sr, mr and hr, we can simplify eq1 and eq2 as follows:
+
+2pi/60 * t * (1 - 1/60) = x * 2pi +/- 2pi/3 ---> eq1
+
+2pi/3600 * t (1 - 1/60) = y * 2pi +/- 2pi/3 ---> eq2
+
+
+eq1 / eq2 => x / y = 60 that is eq1 = 60 * eq2
+
+
+
+
+
+
