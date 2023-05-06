@@ -1,7 +1,7 @@
 package p2;
 import p1.*;
 
-class p1SubDiffPkg extends Base {
+class P1SubDiffPkg extends Base {
 
   p1SubDiffPkg() {
     // pvt = 11; // Will not compile - private member

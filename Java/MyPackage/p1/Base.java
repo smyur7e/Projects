@@ -1,19 +1,19 @@
 package p1;
 
-class Base {
+public class Base {
   private int pvt;
   int def;
   protected int pro;
   public int pub;
 
-  Base() {
+  public Base() {
     pvt = 1;
     def = 2;
     pro = 3;
     pub = 4;
   }
 
-  public String ToString() {
+  public String toString() {
     String value =
       "pvt = " + pvt
       + ", def = " + def

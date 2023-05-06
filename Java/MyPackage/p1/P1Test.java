@@ -5,7 +5,7 @@ class P1Test {
     Base b = new Base();
     SamePkgSub sps = new SamePkgSub();
 
-    System.out.println(b.ToString());
-    System.out.println(sps.ToString());
+    System.out.println("Base::b = " + b.toString());
+    System.out.println("SamePkgSub::sps = " + sps.toString());
   }
 }
