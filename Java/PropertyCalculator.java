@@ -4,85 +4,154 @@ class PropertyCalculator {
 
   public static void main(String[] args) {
 
-    // Present choices for AU states
-    System.out.println("In which state is the property?");
-    String[] states = new String[7];
+    // Storing the separator for a NEWLINE for
+    // input/output help skipping reading them
+    // when the user enters their SINGLE char
+    // choice AFTER a 'System.out.println()'
+    // in a platform agnositc way.
+    String NEWLINE = System.lineSeparator();
+
+    String[] state = new String[7];
     int stateChoice = -1;
-    for (int i = 0; i < 7; i++) {
 
-      switch (i) {
-        case 0: states[i] = "ACT"; break;
-        case 1: states[i] = "NSW"; break;
-        case 2: states[i] = "NT"; break;
-        case 3: states[i] = "QLD"; break;
-        case 4: states[i] = "SA"; break;
-        case 5: states[i] = "TAS"; break;
-        case 6: states[i] = "VIC"; break;
-      }
-      System.out.println("  " + (i + 1) + ". " + states[i]);  
-    }
+    int[][] propertyPriceRange = new int[7][2];
 
-    /* // "System.in.read()" returns a char value. So,
-       // subtract it from the char value of '0' to convert
-       // it to a number. Then subtract 1 to get the index
-       // value corresponding the state chosen by the user.
-    */
-    try {
-      while
-        ((stateChoice = (System.in.readline() - '0') - 1) < 0 ||
-          stateChoice > 6) {
-        System.out.println("Invalid Choice! Try Again");
-      }
-    }
-    catch (IOException rex) {
-      System.out.println("Error Reading Choice :(!");
-    }
+    for (int i =0; i < 2; i++) {
 
-    System.out.println("You chose " + states[stateChoice]);
+      // Menu Presentation Switch
+      switch(i) {
+
+        case 0: // AU State Menu
+     
+          System.out.println("In which state is the property?");
+
+          for (int j = 0; j < 4; j++) {
+             switch (j) {
+               case 0: state[j] = "ACT"; break;
+               case 1: state[j] = "NSW"; break;
+               case 2: state[j] = "VIC"; break;
+               case 3: state[j] = "QLD"; break;
+               // case 4: state[j] = "SA"; break;
+               // case 5: state[j] = "TAS"; break;
+               // case 6: state[j] = "NT"; break;
+             }
+
+             System.out.println("  " + (j + 1) + ". " + state[j]);  
+
+          }
+
+          try {
+ 
+            // "System.in.read()" returns a int value of the char enterd\ed
+            // or -1. To get the menu item option entered subtract it from
+            // the char value of '0' to convert it to a number. Then
+            // subtract 1 to get the index value corresponding the state
+            // chosen by the user.
+
+            while ((stateChoice = (System.in.read() - '0') - 1) < 0
+                    || stateChoice > 6) {
+
+              System.out.println("Invalid Choice! Try Again");
+              // do not read the NEWLINE inserted by 'System.out.println()'
+              System.in.skip(NEWLINE.length());
+
+            }
+          }
+          catch (IOException rex) {
+              System.out.println("Error Reading Choice :(!");
+          }
+
+          System.out.println("You chose " + state[stateChoice]);
+            break;
+
+        case 1: // Property Price Range Menu
+
+          System.out.println("What is the property Value?");
+
+          for (int j = 0; j < 7; j++) {
+            switch(j) {
+              case 0: propertyPriceRange[j][0] = 0;
+                      propertyPriceRange[j][1] = 499_999;
+                      break;
+
+              case 1: propertyPriceRange[j][0] = 500_000;
+                      propertyPriceRange[j][1] = 599_999;
+                      break;
+
+              case 2: propertyPriceRange[j][0] = 600_000;
+                      propertyPriceRange[j][1] = 699_999;
+                      break;
+
+              case 3: propertyPriceRange[j][0] = 700_000;
+                      propertyPriceRange[j][1] = 799_999;
+                      break;
+
+              case 4: propertyPriceRange[j][0] = 800_000;
+                      propertyPriceRange[j][1] = 899_999;
+                      break;
+
+              case 5: propertyPriceRange[j][0] = 900_000;
+                      propertyPriceRange[j][1] = 999_999;
+                      break;
+
+              case 6: propertyPriceRange[j][0] = 1_000_000;
+                      propertyPriceRange[j][1] = 1_099_999;
+                      break;
+            }
+
+            // Present amounts in each range 1000's separators
+            String propertyPriceRangeText = "  " + (j + 1) + ".";
+
+            for (int k = 0; k < 2; k++) {
+
+               int remainder = propertyPriceRange[j][k];
+               int quotient = 0;
+
+               switch (k) {
+                 case 0: propertyPriceRangeText += " From ";
+                         break;
+                 case 1: propertyPriceRangeText += " To ";
+                         break;
+               }
+
+               if (remainder > 1000000) {
+                  quotient = remainder / 1000000;
+                  propertyPriceRangeText += quotient + ",";
+                  remainder %= 1000000;
+               }
+
+               if (remainder > 1000) {
+                  quotient = remainder / 1000;
+
+                  if (quotient >= 100)
+                    propertyPriceRangeText += quotient + ",";
+                  else if (quotient >= 10)
+                    propertyPriceRangeText += "0" + quotient + ",";
+                  else
+                    propertyPriceRangeText += "00" + quotient + ",";
+
+                  remainder %= 1000;
+               } else if (quotient > 0)
+                 propertyPriceRangeText += "000,";
+
+               if (remainder >= 100)
+                  propertyPriceRangeText += remainder;
+               else if (remainder >= 10)
+                  propertyPriceRangeText += "0" + remainder;
+               else if (quotient > 0 || remainder > 0)
+                  propertyPriceRangeText += "00" + remainder;
+               else
+                  propertyPriceRangeText += "0";
+            }
+
+            System.out.println(propertyPriceRangeText);
+          }
+
+          break;
+      }      
+    }
 
 /*
-    System.out.println("What is the property Value?");
-    int[][] ranges = new int[7][2];
-    for (int i = 0; i < 7; i++) {
-      switch(i) {
-        case 0:
-          ranges[i][0] = 0;
-          ranges[i][1] = 499_999;
-          break;
-        case 1:
-          ranges[i][0] = 500_000;
-          ranges[i][1] = 599_999;
-          break; 
-        case 2:
-          ranges[i][0] = 600_000;
-          ranges[i][1] = 699_999;
-          break;
-        case 3:
-          ranges[i][0] = 700_000;
-          ranges[i][1] = 799_999;
-          break;
-        case 4:
-          ranges[i][0] = 800_000;
-          ranges[i][1] = 899_999;
-          break;
-        case 5:
-          ranges[i][0] = 900_000;
-          ranges[i][1] = 999_999;
-          break;
-        case 6:
-          ranges[i][0] = 1_000_000;
-          ranges[i][1] = 1_099_999;
-          break;
-      }
-    }
-
-    System.out.println("  1. $499,999 or less");
-    System.out.println("  2. $500,000 to 599,999");
-    System.out.println("  3. $600,000 to 699,999");
-    System.out.println("  4. $700,000 to 799,999");
-    System.out.println("  5. $800,000 to 899,999");
-    System.out.println("  6. $900,000 to 999,999");
-    System.out.println("  7. $1,000,000 to 1,099,999");
     System.out.print("Enter your choice: " );
     int rangeIdx = System.in.read() - 1;    
 
